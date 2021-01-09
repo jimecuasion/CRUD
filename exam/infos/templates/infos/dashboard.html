@@ -1,0 +1,52 @@
+{% extends 'infos/main.html' %}
+
+{% block content %}
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+				{{ myFilter.form }}
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+	
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-7">
+		<h5>STUDENTS:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'add_student' %}">Add Student</a>
+			<table class="table table-sm">
+				<tr>
+                    <th></th>
+					<th>Name</th>
+                    <th>Date Registered</th>
+					<th>Address</th>
+					<th>Phone</th>
+					<th>Email</th>
+                </tr>
+                {% for student in students %}
+                <tr>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'student' student.id %}">view</a></td>
+                    <td>{{ student.first_name }} {{ student.last_name }}</td>
+                    <td>{{ student.date_registered }}</td>
+                    <td>{{ student.address }}</td>
+                    <td>{{ student.phone }}</td>
+                    <td>{{ student.email }}</td>
+                </tr>
+                {% endfor %}
+ 
+			</table>
+		</div>
+	</div>
+
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'infos/main.html' %}
+
+{% block content %}
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Student name: {{ student.first_name }} {{ student.last_name }}</h5>
+			<hr>
+			<a class="btn btn-outline-info btn-sm btn-block" href="{% url 'update_student' student.id %}">Update</a>
+			<a class="btn btn-outline-danger btn-sm btn-block" href="{% url 'delete_student' student.id %}">Delete</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{ student.email }}</p>
+            <p>Phone: {{ student.phone }}</p>
+            <p>Address: {{ student.address }}</p>
+            <p>Date Registered: {{ student.date_registered }}</p>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
